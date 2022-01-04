@@ -29,7 +29,9 @@ while len(chosenfiles)>0:
         blob = bucket.blob(chosenfiles[0])
         blob.download_to_filename(chosenfiles[0])
         chosenfiles.pop(0)
-        time.sleep(random.randrange(1, intervel, 1))
+        waittime=random.randrange(1, intervel, 1)
+        print(f'Wait {waittime} seconds ...')
+        time.sleep(waittime)
     except Exception as e:
         print(str(e))
         
