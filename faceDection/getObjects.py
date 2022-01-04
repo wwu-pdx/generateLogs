@@ -21,8 +21,8 @@ for b in buckets:
         bucketname= b.name
 
 bucket = storage_client.bucket(bucketname)
-blob = bucket.blob(source_blob_name)
-blob.download_to_filename(destination_file_name)
+#blob = bucket.blob(source_blob_name)
+#blob.download_to_filename(destination_file_name)
 
 print(waittime)
 print(filenames)
