@@ -16,9 +16,14 @@ waittime.sort()
 storage_client = storage.Client.from_service_account_json('pd5-access.json')
 buckets = storage_client.list_buckets()
 bucketname=''
-for bucket in buckets:
-    if bucket.name.startswith( 'pd5-bucket-' ):
-        bucketname= bucket.name
+for b in buckets:
+    if b.name.startswith( 'pd5-bucket-' ):
+        bucketname= b.name
+
+bucket = storage_client.bucket(bucketname)
+blob = bucket.blob(source_blob_name)
+blob.download_to_filename(destination_file_name)
+
 print(waittime)
-print()
+print(filenames)
 
