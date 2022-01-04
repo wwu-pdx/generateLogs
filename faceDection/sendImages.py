@@ -25,7 +25,7 @@ for entry in os.scandir(directory):
             #print(response.status_code)
             #print(response.text)
          count+=1
-         print(f'{count}  {print(name_img)}')
+         print(f'{count}')
          
 
 

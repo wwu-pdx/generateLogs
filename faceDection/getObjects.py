@@ -34,6 +34,9 @@ while len(chosenfiles)>0:
         time.sleep(waittime)
     except Exception as e:
         print(str(e))
+        waiterror=random.randrange(1, intervel, 1)
+        print(f'Wait {waiterror} seconds ...')
+        time.sleep(waiterror)
         
 
 print(chosenfiles)
