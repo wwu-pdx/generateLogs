@@ -4,13 +4,14 @@ from googleapiclient import discovery
 import google.auth
 import sys
 import random
+import time
 
 filenames=filelist
 num = int(sys.argv[1])
 
 intervel = int(len(filenames)/num)
-waittime = [random.randrange(1, intervel, 1) for i in range(num)]
-waittime.sort() 
+#waittime = [random.randrange(1, intervel, 1) for i in range(num)]
+#waittime.sort(reverse=True) 
 chosenfiles= random.choices(filenames,k=num)
 chosenfiles.sort()
 
@@ -22,16 +23,16 @@ for b in buckets:
     if b.name.startswith( 'pd5-bucket-' ):
         bucketname= b.name
 
-# bucket = storage_client.bucket(bucketname)
-# while len(chosenfiles)>0:
-#     try:
-#         blob = bucket.blob(chosenfiles[0])
-#         blob.download_to_filename(chosenfiles[0])
-#     except Exception as e:
-#         print(str(e))
+bucket = storage_client.bucket(bucketname)
+while len(chosenfiles)>0:
+    try:
+        blob = bucket.blob(chosenfiles[0])
+        blob.download_to_filename(chosenfiles[0])
+        chosenfiles.pop(0)
+        time.sleep(random.randrange(1, intervel, 1))
+    except Exception as e:
+        print(str(e))
+        
 
-
-
-print(waittime)
 print(chosenfiles)
 
