@@ -31,12 +31,13 @@ while len(chosenfiles)>0:
         chosenfiles.pop(0)
         waittime=random.randrange(1, intervel, 1)
         print(f'Wait {waittime} seconds ...')
+        print(f'{len(chosenfiles)} left')
         time.sleep(waittime)
     except Exception as e:
         print(str(e))
-        waiterror=random.randrange(1, intervel, 1)
-        print(f'Wait {waiterror} seconds ...')
-        time.sleep(waiterror)
+        # waiterror=random.randrange(1, intervel, 1)
+        # print(f'Wait {waiterror} seconds ...')
+        # time.sleep(waiterror)
         
 
 print(chosenfiles)

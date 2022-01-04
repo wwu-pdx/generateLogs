@@ -22,6 +22,7 @@ for entry in os.scandir(directory):
             name_img= os.path.basename(entry.path)
             files= {'file': (name_img,img,'multipart/form-data',{'Expires': '0'}) } 
             response=requests.post(url, files=files,headers=headers)
+            print(name_img)
             #print(response.status_code)
             #print(response.text)
          count+=1
